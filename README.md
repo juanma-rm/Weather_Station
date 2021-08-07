@@ -27,7 +27,7 @@ The hardware and software diagrams, as well as the 3D view of the resulting PCB,
 - 1 DHT22 per node
 - 1 10kOhm resistor per node
 - 1 microUSB charger per node
-- Some way to tie and put all the previous components together (PCB + solder, protoboarb + wires, ...)
+- Some way to tie and put all the previous components together (PCB + solder kit, protoboard + wires, ...)
 - Blynk account + Blynk client (Android app, for instance)
 - Wi-Fi available for Wemos D1 mini
 
