@@ -41,6 +41,19 @@ void go_to_sleep(void);
  * Global data
  * ------------------------------------------------------------*/
 
+// Blynk device (1, 2, 3)
+#define DEV_ID 2
+#if DEV_ID == 1
+#define VIRT_PIN_T V1 
+#define VIRT_PIN_H V2
+#elif DEV_ID == 2
+#define VIRT_PIN_T V3
+#define VIRT_PIN_H V4
+#elif DEV_ID == 3
+#define VIRT_PIN_T V5
+#define VIRT_PIN_H V6
+#endif
+
 // DTH22
 #define DHTPIN D1
 DHT dht(DHTPIN, DHT22);
@@ -71,7 +84,7 @@ void setup(void)
     #endif
 
 	// Blynk and wifi
-	Blynk.begin(auth, ssid, pass);
+	Blynk.begin(auth, ssid, pass, "blynk.cloud", 80);
     #if defined (DEBUG)
     debug_Wifi();           // Debug Wifi por monitor serie
     #endif
@@ -114,12 +127,10 @@ void debug_Wifi(void)
 // Update virtual values (temp and hum) in Blynk
 void update_blynk(void)
 {
-    // Blynk.virtualWrite(V0, value);
-    // value += 1;
 	temp = dht.readTemperature();
 	hum = dht.readHumidity();
-	Blynk.virtualWrite(V1, temp);
-	Blynk.virtualWrite(V2, hum);
+	Blynk.virtualWrite(VIRT_PIN_T, temp);
+	Blynk.virtualWrite(VIRT_PIN_H, hum);
 }
 
 void go_to_sleep(void)
